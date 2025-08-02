@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model CourtQuery {
+  id           Int                  @id @default(autoincrement())
+  caseType     String
+  caseNumber   String
+  filingYear   String
+  title        String?              // optional case title
+  status       String?              // optional case status
+  historyLink  String?              // optional case history link
+  createdAt    DateTime             @default(now())
+
+  metadataId   Int?                 @unique
+  metadata     ParsedCaseMetadata? @relation(fields: [metadataId], references: [id])
+
+  orders       OrderDocument[]
+}
+
+model ParsedCaseMetadata {
+  id           Int           @id @default(autoincrement())
+  petitioner   String
+  respondent   String
+  filingDate   String
+  nextHearing  String
+  courtName    String
+  judgeName    String?
+
+  query        CourtQuery?
+}
+
+model OrderDocument {
+  id        Int         @id @default(autoincrement())
+  title     String
+  url       String
+  date      String
+  query     CourtQuery  @relation(fields: [queryId], references: [id])
+  queryId   Int
+}
