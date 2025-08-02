@@ -10,7 +10,7 @@ export async function getCaptchaCode() {
   try {
     if (!browser || closed) {
       closed = false;
-      browser = await chromium.launch({ headless: false }); //headless hide the chronium browser
+      browser = await chromium.launch({ headless: true }); //headless hide the chronium browser
       page = await browser.newPage();
       await page.goto('https://delhihighcourt.nic.in/app/');
 
