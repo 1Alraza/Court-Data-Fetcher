@@ -225,11 +225,3 @@ model OrderDocument {
 }
 ```
 
----
-
-## 🧹 To Do / Future Enhancements
-
-- 🔄 Add retry mechanism on Playwright CAPTCHA errors
-- 🧾 Search history of fetched cases
-- 📤 Export case data as PDF or CSV
-- ⚖️ Add support for multiple courts (e.g., District/SC)
