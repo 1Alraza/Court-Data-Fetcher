@@ -9,6 +9,7 @@ A full-stack web application that scrapes **Delhi High Court** data based on use
 | Layer      | Tech/Library                         |
 |------------|--------------------------------------|
 | Frontend   | React, TailwindCSS, react-select     |
+
 | Backend    | Express.js, Playwright (for scraping)|
 | Database   | PostgreSQL, Prisma ORM               |
 | Scraping   | Playwright (headless Chromium)       |
