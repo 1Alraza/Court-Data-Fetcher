@@ -9,7 +9,6 @@ A full-stack web application that scrapes **Delhi High Court** data based on use
 | Layer      | Tech/Library                         |
 |------------|--------------------------------------|
 | Frontend   | React, TailwindCSS, react-select     |
-
 | Backend    | Express.js, Playwright (for scraping)|
 | Database   | PostgreSQL, Prisma ORM               |
 | Scraping   | Playwright (headless Chromium)       |
@@ -63,11 +62,11 @@ A full-stack web application that scrapes **Delhi High Court** data based on use
   └── App.jsx (Main React app)
   └── config/config.js (case types list)
 
- /server
+/server
   └── index.js (Express routes)
   └── scraper/scraper.js (Playwright logic)
 
- prisma/
+prisma/
   └── schema.prisma
 .env
 ```
@@ -202,6 +201,7 @@ model CourtQuery {
   title       String?
   status      String?
   historyLink String?
+  metadataId  Int?
   metadata    ParsedCaseMetadata? @relation(fields: [metadataId], references: [id])
   orders      OrderDocument[]
 }
@@ -220,6 +220,8 @@ model OrderDocument {
   title   String
   url     String
   date    String
+  courtQueryId Int
+  courtQuery   CourtQuery @relation(fields: [courtQueryId], references: [id])
 }
 ```
 
