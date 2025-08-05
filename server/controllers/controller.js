@@ -11,7 +11,7 @@ export const Getcaptcha = async (req, res) => {
   }
 };
 
-export const GetCourtdata = async (req, res) => {
+export const FetchCourtdata = async (req, res) => {
   const { caseType, caseNumber, filingYear, captchaInput } = req.body;
 
   try {
